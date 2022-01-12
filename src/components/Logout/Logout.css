@@ -1,0 +1,12 @@
+.logout {
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+}
+
+.logout h3 {
+  margin: 10px 40px;
+  padding: 5px;
+  cursor: pointer;
+  border: 2px solid black;
+}

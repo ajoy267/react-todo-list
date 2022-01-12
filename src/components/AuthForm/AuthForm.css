@@ -1,0 +1,11 @@
+.form-controls {
+  display: flex;
+  justify-content: right;
+  margin-right: 40%;
+  margin-bottom: 10px;
+  font-family: cursive;
+}
+
+.form-controls label {
+  margin-right: 5px;
+}
