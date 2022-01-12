@@ -1,0 +1,22 @@
+h3 {
+  font-family: cursive;
+}
+
+.todo-list-title {
+  font-size: 2rem;
+  margin-bottom: 40px;
+}
+
+ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: auto;
+}
+
+li {
+  display: flex;
+  margin-bottom: 20px;
+  padding-left: 40%;
+}
