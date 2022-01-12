@@ -1,4 +1,5 @@
 import React from 'react';
+import './AddTask.css';
 
 export default function AddTask({ addTask, setAddTask, handleSubmit }) {
   return (
