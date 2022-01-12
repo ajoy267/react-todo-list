@@ -7,7 +7,7 @@ import AddTask from '../../components/AddTask/AddTask';
 
 export default function Todo({ setCurrentUser }) {
   const [task, setTask] = useState([]);
-  const [addTask, setAddTask] = useState({});
+  const [addTask, setAddTask] = useState('');
   const [loading, setLoading] = useState(true);
   const history = useHistory();
 
@@ -19,7 +19,9 @@ export default function Todo({ setCurrentUser }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await createTask(addTask);
+    const resp = await createTask(addTask);
+    setAddTask('');
+    setTask((prev) => [...prev, resp[0]]);
   };
 
   useEffect(() => {
@@ -35,7 +37,7 @@ export default function Todo({ setCurrentUser }) {
   return (
     <div>
       <TodoList task={task} />
-      <AddTask setAddTask={setAddTask} handleSubmit={handleSubmit} />
+      <AddTask addTask={addTask} setAddTask={setAddTask} handleSubmit={handleSubmit} />
       <button onClick={logoutUser}>Log Out</button>
     </div>
   );
