@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { logout } from '../../services/users';
 import { useHistory } from 'react-router-dom';
 import TodoList from '../../components/TodoList/TodoList';
-import { createTask, fetchTodoList } from '../../services/todo';
+import { createTask, fetchTodoList, updateTask } from '../../services/todo';
 import AddTask from '../../components/AddTask/AddTask';
 
 export default function Todo({ setCurrentUser }) {
@@ -24,6 +24,12 @@ export default function Todo({ setCurrentUser }) {
     setTask((prev) => [...prev, resp[0]]);
   };
 
+  const handleClick = async (task) => {
+    await updateTask(task.id, !task.is_complete);
+    const resp = await fetchTodoList();
+    setTask(resp);
+  };
+
   useEffect(() => {
     const getTodoList = async () => {
       const resp = await fetchTodoList();
@@ -36,7 +42,7 @@ export default function Todo({ setCurrentUser }) {
   }, [loading]);
   return (
     <div>
-      <TodoList task={task} />
+      <TodoList task={task} handleClick={handleClick} />
       <AddTask addTask={addTask} setAddTask={setAddTask} handleSubmit={handleSubmit} />
       <button onClick={logoutUser}>Log Out</button>
     </div>
